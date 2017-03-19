@@ -1,4 +1,7 @@
 module.exports = {
+
+
+//show all USERS
   showDogs: (req,res) => {
     const dogs = [
       {
@@ -14,3 +17,5 @@ module.exports = {
   res.render("pages/dogs", {dogs: dogs, title:"All Dogs"});
   }
 }
+
+// Show single User

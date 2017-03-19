@@ -38,3 +38,7 @@ footer{
   border:solid black;
   margin-bottom:5px;
 }
+.wrap{
+  margin-right: 40px;
+  margin-left: 40px;
+}
