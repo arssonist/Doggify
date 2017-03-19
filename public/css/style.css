@@ -5,9 +5,8 @@ body {
   font-size: 16px;
   line-height: 1.5;
 }
-.site-main {
-  padding-bottom: 50px;
-  text-indent: 50pxl
+.main-section {
+
 }
 .main-col1 {
   background-color: green;
@@ -37,6 +36,8 @@ footer{
 .dog-cards {
   border:solid black;
   margin-bottom:5px;
+  text-align: center;
+  min-height:200px;
 }
 .wrap{
   margin-right: 40px;

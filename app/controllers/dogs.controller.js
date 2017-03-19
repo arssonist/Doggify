@@ -17,5 +17,8 @@ module.exports = {
   res.render("pages/dogs", {dogs: dogs, title:"All Dogs"});
   }
 }
-
-// Show single User
+//
+// // Show single User
+//   showSingle: (req,res) => {
+//
+//   }

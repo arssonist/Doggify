@@ -3,16 +3,20 @@
     <% include partials/head.ejs %>
 
   <body>
-    <!-- header -->
+
+
+    <section class="header-section">
     <%- include partials/header.ejs %>
-  <!-- main -->
-  <main class="site-main">
+    </section>
+
+  <main class="main-section">
     <!-- body inject from the home page -->
     <%- body %>
 
   </main>
 
-  </body>
+
   <%- include partials/footer.ejs %>
+  </body>
   <%- include partials/jsdefaults.ejs %>
 </html>
