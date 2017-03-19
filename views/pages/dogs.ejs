@@ -2,4 +2,24 @@
   <h1>All Dogs</h1>
 
 
+  <div class="row">
+      <% for (var dog of dogs) { %>
+      <div class="col-sm-6">
+        <div class="card dog-cards">
+          <div class="card-block">
+            <h3 class="card-title"><strong><%= dog.name %> </strong></h3>
+                <p class="card-text">
+                <dt><strong>Breed: </strong><%= dog.breed %> </dt>
+                <dt><strong>Description: </strong><%= dog.description %> </dt>
+                <a href="/dogs<%= dogs.slug %>" class="btn btn-sm btn-primary">View Doggie Info</a>
+              </dl>
+
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+            <% } %>
   </div>
+</div>

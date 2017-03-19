@@ -11,6 +11,6 @@ module.exports = {
       name: "Derbis", breed:"Schmerbis",slug:"derbis", description:"A real Schmerbis Derbis"
     }
   ];
-  res.render("pages/dogs", {dogs: dogs});
+  res.render("pages/dogs", {dogs: dogs, title:"All Dogs"});
   }
 }

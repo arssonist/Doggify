@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
-
+app.locals.appTitle = "Dogify"
 
 app.use(require('./app/routes'));
 
