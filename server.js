@@ -8,7 +8,15 @@ var express = require('express'),
     expressLayouts = require('express-ejs-layouts/'),
     port = process.env.PORT || 8080,
     request = require('request'),
-    mongoose = require('mongoose')
+    mongoose = require('mongoose'),
+    mongoDB = 'mongodb://localhost:27017'
+    // mongoDB = process.env.DB_URI;
+
+/////////DB CONNNECT/ /////////
+// DB_URI is added to the process
+mongoose.connect(`${mongoDB}/doggify_local`)
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(bodyParser.urlencoded( {extended: true}));
 app.use(bodyParser.json());
@@ -20,9 +28,7 @@ app.use(express.static(__dirname + '/public'))
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 
-/////////DB CONNNECT/ /////////
-// DB_URI is added to the process
-mongoose.connect(process.env.DB_URI)
+
 
 ///////////////LOCALS- include by name//////////////////////
 app.locals.appTitle = "Dogify"

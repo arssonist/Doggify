@@ -8,8 +8,12 @@ const express = require('express'),
 module.exports = router;
 
 // input function from controller
-router.get('/',     mainController.showHome)
-router.get('/dogs/seed', dogsController.seedEvents)
+router.get('/',  mainController.showHome)
+
+
+router.get('/dogs/seed', dogsController.seedDogs)
+
+
 router.get('/dogs', dogsController.showDogs)
 router.get('/dogs/:slug', dogsController.showSingleDog)
 //url example => dogs

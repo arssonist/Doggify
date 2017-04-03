@@ -1,4 +1,6 @@
-const Dog = require("../models/Dog")
+const Dog = require("../models/Dog.js"),
+      mongoose = require('mongoose')
+// -works by returing a function that gives direction what to do with response, and an object showing what to display based on data.
 
 module.exports = {
 //show all USERS
@@ -19,24 +21,32 @@ module.exports = {
 
   },
 
-  seedEvents: (req,res) => {
+  seedDogs: (req,res) => {
+  mongoose.createConnection('mongodb://localhost:27017/doggify_local')
     //create events
     const dogs = [
-      {
+      new Dog({
         name:"Fluffy", breed:"ChowChow", description:"4 year old Chow. Really, really fluffy."
-      },
-      {
+      }),
+      new Dog({
         name:"Buddy", breed:"White Lab", description:"A friendly 6 year old white lab mix. Loves playing ball"
-    },
-    {
+    }),
+      new Dog({
       name: "Derbis", breed:"Schmerbis", description:"A real Schmerbis Derbis"
-    }
+    })
     ];
-    //use event model to save
-    for(dog of dogs){
-      var newDog = new Dog(dog);
-      newDog.save()
+    var done = 0
+    for (var i = 0; i < dogs.length; i++) {
+      dogs[i].save(function(err, result){
+        done++
+        if (done === products.length){
+          exit();
+        }
+      })
     }
-    res.send('DB seeded')
+    function exit(){
+      mongoose.disconnect()
+    }
+    res.send("DB seeded" + res)
   }
 }

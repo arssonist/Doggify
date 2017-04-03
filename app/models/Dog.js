@@ -2,31 +2,36 @@
 // 2 create a model
 // 3 export the model
 
-const mongoose = require('mongoose')
-const Schema   = mongoose.Schema;
+const mongoose = require('mongoose'),
+      Schema = mongoose.Schema;
+
+  const dogSchema = new Schema({
+   name: String,
+   slug: {
+     type: String,
+     unique: true
+   },
+   description: String
+  });
 
 
+   const dogModel = mongoose.model('Dog', dogSchema)
 
-const dogSchema = new Schema({
-  name:        String,
-  slug: {
-    type:      String,
-    unique:    true
-  },
-  description: String
-});
+   module.exports = dogModel;
+
+
+   dogSchema.pre('save', function(next){
+     this.slug = slugify(this.name);
+     next();
+   })
+
+// });
 
 // MIDDLEWARE////////////
 // use pre to call MIDDLEWARE
-dogSchema.pre('save', function(next){
-  this.slug = slugify(this.name);
-  next();
-})
 
 
-const dogModel = mongoose.model('Dog', dogSchema)
 
-module.exports = dogModel;
 
 function slugify(text){
   return text.toString().toLowerCase()
