@@ -1,12 +1,43 @@
 const Dog = require("../models/Dog.js"),
-      mongoose = require('mongoose')
+      mongoose = require('mongoose'),
+      mongoDB = process.env.DB_URI;
 // -works by returing a function that gives direction what to do with response, and an object showing what to display based on data.
+
+
 
 module.exports = {
 //show all USERS
+// -----DB setup for local DB
+//   showDogs: (req,res) => {
+//     console.log('getting all dogs');
+//     db.Dog.find({})
+//     .exec(function(err, dogs) {
+//       if(err) {
+//         res.send('error occured')
+//       } else {
+//         console.log(dogs);
+//     // res.render("pages/dogs", {dogs:dogs, title:"All Dogs"})
+//     res.json(dogs)
+//       }
+//     });
+// }
+
   showDogs: (req,res) => {
-  res.render("pages/dogs", {dogs:dogs, title:"All Dogs"});
-},
+      const dogs = [
+        {
+          name:"Fluffy", breed:"ChowChow", description:"4 year old Chow. Really, really fluffy."
+        },
+        {
+          name:"Buddy", breed:"White Lab", description:"A friendly 6 year old white lab mix. Loves playing ball"
+          },
+          {
+            name: "Derbis", breed:"Schmerbis", description:"A real Schmerbis Derbis"
+          }
+          ];
+
+    console.log('getting all dogs');
+    res.render("pages/dogs", {dogs:dogs, title:"All Dogs"})
+  },
 
 //url example => dogs
 //
@@ -22,31 +53,41 @@ module.exports = {
   },
 
   seedDogs: (req,res) => {
-  mongoose.createConnection('mongodb://localhost:27017/doggify_local')
+  // mongoose.createConnection(mongoDB)
     //create events
     const dogs = [
-      new Dog({
+      {
         name:"Fluffy", breed:"ChowChow", description:"4 year old Chow. Really, really fluffy."
-      }),
-      new Dog({
+      },
+      {
         name:"Buddy", breed:"White Lab", description:"A friendly 6 year old white lab mix. Loves playing ball"
-    }),
-      new Dog({
+    },
+    {
       name: "Derbis", breed:"Schmerbis", description:"A real Schmerbis Derbis"
-    })
+    }
     ];
-    var done = 0
-    for (var i = 0; i < dogs.length; i++) {
-      dogs[i].save(function(err, result){
-        done++
-        if (done === products.length){
-          exit();
-        }
-      })
+    // for (var i = 0; i < dogs.length; i++) {
+    //   dogs[i].save(function(err, result){
+    //     done++
+    //     if (done === d.length){
+    //       exit();
+    //     }
+    //   })
+    // }
+
+    // function exit(){
+    //   mongoose.disconnect()
+    // }
+    Dog.remove({}, () => {
+    for (dog of dogs){
+      var newDog = new Dog(dog);
+      newDog.save()
     }
-    function exit(){
-      mongoose.disconnect()
-    }
-    res.send("DB seeded" + res)
+  })
+    // if (err){
+    //   res.send(err)
+    // }else {
+    //   res.send("DB seeded")
+    // }
   }
 }

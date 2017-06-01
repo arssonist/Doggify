@@ -9,14 +9,21 @@ var express = require('express'),
     port = process.env.PORT || 8080,
     request = require('request'),
     mongoose = require('mongoose'),
-    mongoDB = 'mongodb://localhost:27017'
-    // mongoDB = process.env.DB_URI;
+   //'mongodb://localhost:27017/test_1'
+    mongoDB = process.env.DB_URI;
+
 
 /////////DB CONNNECT/ /////////
 // DB_URI is added to the process
-mongoose.connect(`${mongoDB}/doggify_local`)
+mongoose.connect(mongoDB)
+console.log('db connected')
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+// setTimeout(function(){
+//   console.log(mongoose.connection.readyState);
+//
+// }, 1000);
 
 app.use(bodyParser.urlencoded( {extended: true}));
 app.use(bodyParser.json());
@@ -35,7 +42,7 @@ app.locals.appTitle = "Dogify"
 
 
 /////////////ROUTES/////////////////
-app.use(require('./app/routes'));
+app.use(require('./app/routes/dog_routes.js'));
 
 //////////////////PORT///////////////////////
 app.listen(port);

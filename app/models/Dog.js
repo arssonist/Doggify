@@ -7,15 +7,26 @@ const mongoose = require('mongoose'),
 
   const dogSchema = new Schema({
    name: String,
+   description: String,
+   breed:String,
+   DOB:Date,
+   age:Number,
+   breeder:String, //breeder.id
    slug: {
      type: String,
      unique: true
-   },
-   description: String
+    }
   });
 
 
    const dogModel = mongoose.model('Dog', dogSchema)
+
+   dogSchema
+   .virtual('url')
+   .get(function () {
+     return '/dog/' + this._id;
+   });
+
 
    module.exports = dogModel;
 
@@ -29,9 +40,6 @@ const mongoose = require('mongoose'),
 
 // MIDDLEWARE////////////
 // use pre to call MIDDLEWARE
-
-
-
 
 function slugify(text){
   return text.toString().toLowerCase()
