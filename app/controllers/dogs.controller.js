@@ -36,7 +36,7 @@ module.exports = {
           ];
 
     console.log('getting all dogs');
-    res.render("pages/dogs", {dogs:dogs, title:"All Dogs"})
+    res.render("pages/dogsViews/dogs", {dogs:dogs, title:"All Dogs"})
   },
 
 //url example => dogs
@@ -47,7 +47,7 @@ module.exports = {
       {
         name:"Fluffy", breed:"ChowChow", slug:'fluffy', description:"4 year old Chow. Really, really fluffy."
       }
-    res.render("pages/dog", {dog:dog, title:dog.name})
+    res.render("pages/dogsViews/dog", {dog:dog, title:dog.name})
 
 
   },
@@ -89,5 +89,12 @@ module.exports = {
     // }else {
     //   res.send("DB seeded")
     // }
+},
+  // # GET /dogs/new
+  newDog:(req,res) => {
+      console.log('new dog route')
+      res.render('pages/dogsViews/newdog',{
+          title:"Add a New dog"
+      })
   }
 }
