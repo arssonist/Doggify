@@ -14,9 +14,9 @@ router.get('/dogs/seed', dogsController.seedDogs)
 //get all dogs
 router.get('/dogs', dogsController.showDogs)
 
-router.
+// router.
 
 //show single dog
-router.get('/dogs/:slug', dogsController.showSingleDog)
+// router.get('/dogs/:slug', dogsController.showSingleDog)
 //url example => dogs
 // router.get('dogs', )

@@ -42,6 +42,7 @@ app.locals.appTitle = "Dogify"
 
 
 /////////////ROUTES/////////////////
+app.use(require('./app/routes/appRoutes.js'));
 app.use(require('./app/routes/dog_routes.js'));
 
 //////////////////PORT///////////////////////
