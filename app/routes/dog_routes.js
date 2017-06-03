@@ -7,14 +7,16 @@ const express = require('express'),
 
 module.exports = router;
 
-// input function from controller
-router.get('/',  mainController.showHome)
 
-
+//sample seed route
 router.get('/dogs/seed', dogsController.seedDogs)
 
-
+//get all dogs
 router.get('/dogs', dogsController.showDogs)
+
+router.
+
+//show single dog
 router.get('/dogs/:slug', dogsController.showSingleDog)
 //url example => dogs
 // router.get('dogs', )
