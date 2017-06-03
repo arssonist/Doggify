@@ -1,7 +1,6 @@
 const Dog = require("../models/Dog.js"),
       mongoose = require('mongoose'),
       mongoDB = process.env.DB_URI;
-// -works by returing a function that gives direction what to do with response, and an object showing what to display based on data.
 
 
 
@@ -96,5 +95,15 @@ module.exports = {
       res.render('pages/dogsViews/newdog',{
           title:"Add a New dog"
       })
+  },
+  createDog:(req,res) => {
+      console.log('need Dog Added')
+      res.render('pages/dogsViews/newdog',{
+          title:"Add a New dog"
+      })
+      Dog.create({ name: 'also_awesome' }, function (err, awesome_instance) {
+          if (err) return handleError(err);
+  // saved!
+});
   }
 }

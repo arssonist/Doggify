@@ -1,4 +1,4 @@
-const express = require('express'),
+var express = require('express'),
     router = express.Router(),
 // import from from controller
     mainController = require('../controllers/main.controller')
