@@ -4,5 +4,8 @@ const express = require('express'),
     breederController = require('../controllers/breeders.controller'),
     mainController = require('../controllers/main.controller.js')
 
-router.get('/breeders', showBreeders.breederController)
+module.exports = router
+
+
+router.get('/breeders', breederController.showBreeders)
 // router.get('/breeders', showHome.mainController)
