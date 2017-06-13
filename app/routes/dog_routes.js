@@ -25,3 +25,6 @@ router.get('/dogs', dogsController.showDogs)
 
 router.get('/dogs/new',
 dogsController.newDog)
+
+router.post('/dogs/new',
+dogsController.createDog)

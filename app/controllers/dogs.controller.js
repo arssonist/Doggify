@@ -97,13 +97,17 @@ module.exports = {
       })
   },
   createDog:(req,res) => {
-      console.log('need Dog Added')
-      res.render('pages/dogsViews/newdog',{
-          title:"Add a New dog"
-      })
-      Dog.create({ name: 'also_awesome' }, function (err, awesome_instance) {
-          if (err) return handleError(err);
-  // saved!
-});
+  //     console.log('need Dog Added')
+  //     res.render('pages/dogsViews/newdog',{
+  //         title:"Add a New dog"
+  //     })
+  //     Dog.create({ name: req.body.new-dog-name }, function (err, data) {
+  //         if (err) return handleError(err);
+  // // saved!
+  // console.log)(data)
+     console.log(req.body.newdogname)
+     res.send(req.body.newdogname)
+     return
+    // res.send(req.body.new-dog-name)
   }
 }
